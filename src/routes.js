@@ -18,8 +18,9 @@ routes.get('/users', UserController.index);
 routes.post('/users', UserController.store);
 
 //SERVICES ROUTES
+routes.get('/services', ServiceController.index); //LISTA TODOS OS SERVICES
 routes.get('/users/:user_id/services', ServiceController.listServiceForUser); //LISTA SERVICES POR USER
-routes.get('/categories/:category_id/services', ServiceController.listServiceForUser);//LISTA SERVICES POR CATEGORY
+routes.get('/categories/:category_id/services', ServiceController.listServiceForCategory);//LISTA SERVICES POR CATEGORY
 routes.post('/users/:user_id/services', ServiceController.store); // CRIA SERVICE
 
 //CATEGORY ROUTES

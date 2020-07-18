@@ -4,6 +4,12 @@ const Category = require('../models/Category');
 
 
 module.exports = {
+    async index(req, res) {
+        const services = await Service.findAll();
+ 
+         return res.json(services); 
+     },
+
     async listServiceForUser(req, res){
         const { user_id } = req.params;
 
