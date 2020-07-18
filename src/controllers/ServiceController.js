@@ -42,7 +42,7 @@ module.exports = {
         if(!user) {
             return res.status(400).json({ error: 'User no found' });
         }
-        if(!category) {
+        else if(!category) {
             return res.status(400).json({ error: 'Category no found' });
         }
        

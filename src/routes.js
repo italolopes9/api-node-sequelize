@@ -23,9 +23,14 @@ routes.get('/users/:user_id/services', ServiceController.listServiceForUser); //
 routes.get('/categories/:category_id/services', ServiceController.listServiceForCategory);//LISTA SERVICES POR CATEGORY
 routes.post('/users/:user_id/services', ServiceController.store); // CRIA SERVICE
 
+
 //CATEGORY ROUTES
 routes.get('/categories', CategoryController.index);
 routes.post('/categories', CategoryController.store);
+routes.delete('/categories/', CategoryController.deleteAll);
+routes.delete('/categories/:id', CategoryController.deleteForId);
+routes.put('/categories/:id', CategoryController.update);
+
 
 
 module.exports = routes; 
