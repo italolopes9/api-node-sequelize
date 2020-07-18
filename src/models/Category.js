@@ -9,7 +9,9 @@ class Category extends Model {
         })
     }
 
-    
+    static associate(models) {
+        this.hasMany(models.Service, { foreignKey: 'category_id', as: 'categories'})
+    }
 }
 
 module.exports = Category;
