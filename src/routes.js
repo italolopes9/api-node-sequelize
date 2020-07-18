@@ -1,8 +1,8 @@
 const express = require('express');
 
 const UserController = require('./controllers/UserController');
-const ServicesController = require('./controllers/ServicesController');
-
+const ServiceController = require('./controllers/ServiceController');
+const CategoryController = require('./controllers/CategoryController');
 
 const AuthController = require('./controllers/AuthController');
 
@@ -13,11 +13,14 @@ const routes = express.Router();
 
 routes.post('/login', AuthController.login);
 
-routes.get('/users',authMiddleware, UserController.index);
+routes.get('/users', UserController.index);
 routes.post('/users', UserController.store);
 
-routes.get('/users/:user_id/services', ServicesController.index);
-routes.post('/users/:user_id/services', ServicesController.store);
+routes.get('/users/:user_id/services', ServiceController.index);
+routes.post('/users/:user_id/services', ServiceController.store);
+
+routes.get('/categories', CategoryController.index);
+routes.post('/categories', CategoryController.store);
 
 
 module.exports = routes; 

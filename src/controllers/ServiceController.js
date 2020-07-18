@@ -2,6 +2,7 @@ const User = require('../models/User');
 const Service = require('../models/Service');
 
 
+
 module.exports = {
     async index(req, res){
         const { user_id } = req.params;
@@ -31,6 +32,7 @@ module.exports = {
             phone,
             address,
             user_id,
+            
         });
 
         return res.json(service);
