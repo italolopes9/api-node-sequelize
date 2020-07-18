@@ -16,6 +16,9 @@ routes.post('/login', AuthController.login);
 //USER ROUTES
 routes.get('/users', UserController.index);
 routes.post('/users', UserController.store);
+routes.delete('/users/', UserController.deleteAll);
+routes.delete('/users/:id', UserController.deleteForId);
+routes.put('/users/:id', UserController.update);
 
 //SERVICES ROUTES
 routes.get('/services', ServiceController.index); //LISTA TODOS OS SERVICES

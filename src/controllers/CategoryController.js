@@ -20,6 +20,12 @@ module.exports = {
     async deleteForId(req, res) {
         const { id } = req.params;
 
+        const categoryId = await Category.findByPk(id);
+        
+        if(!categoryId) {
+            return res.status(400).json({ error: 'Category not found' });
+        }
+
         await Category.destroy({ where: { id: id}});
 
         return res.send('Category was deleted successfully!');
