@@ -2,21 +2,24 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return queryInterface.createTable('categories', {
+    return queryInterface.createTable('images', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
       },
-      name: {
+      service_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: { model: 'services', key: 'id' },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+      },
+      url: {
         type: Sequelize.STRING,
         allowNull: false
-      },
-      icon: {
-        type: Sequelize.STRING,
-        allowNull: true
-      },
+      },   
       created_at: {
         type: Sequelize.DATE,
         allowNull: false
@@ -33,6 +36,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('categories');
+    return queryInterface.dropTable('images');
   }
 };

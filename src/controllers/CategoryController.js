@@ -1,6 +1,8 @@
 const Category = require('../models/Category');
 const { update } = require('../models/Category');
 
+const { ImageUtil } = require('../utils')
+
 
 module.exports = {
     async index(req, res) {
@@ -11,8 +13,15 @@ module.exports = {
 
     async store(req, res) {
         const { name } = req.body;
+        let { icon } = req.body;
+        
+        if (icon) {
+             icon = await ImageUtil.saveLocal(
+                { name, avatar: icon, url:process.env.URL, type: "category" }
+            );
+        }
 
-        const category = await Category.create({ name });
+        const category = await Category.create({ name, icon });
 
         return res.json(category);
     },
@@ -43,7 +52,7 @@ module.exports = {
 
     async update(req, res) {
         const { id } = req.params;
-        const { name } = req.body;
+        const { name, icon } = req.body;
 
         const categoryId = await Category.findByPk(id);
         
@@ -52,7 +61,7 @@ module.exports = {
         }
 
         await Category.update(
-            { name: name },
+            { name: name, icon },
             { where: { id: id } }
         ); 
 

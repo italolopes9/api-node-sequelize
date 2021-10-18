@@ -15,8 +15,8 @@ class Service extends Model {
 
     static associate(models) {
         this.belongsTo(models.User, { foreignKey: 'user_id', as: 'author' });
-        this.belongsTo(models.Category, { foreignKey: 'category_id', as: 'categories'})
-
+        this.belongsTo(models.Category, { foreignKey: 'category_id', as: 'categories'});
+        this.hasMany(models.Image, { foreignKey: 'service_id', as: 'images' });
     }
     
 }

@@ -3,6 +3,7 @@ const express = require('express');
 const UserController = require('./controllers/UserController');
 const ServiceController = require('./controllers/ServiceController');
 const CategoryController = require('./controllers/CategoryController');
+const ImageController = require('./controllers/ImageController');
 
 const AuthController = require('./controllers/AuthController');
 
@@ -16,6 +17,7 @@ routes.post('/login', AuthController.login);
 //USER ROUTES
 routes.get('/users', UserController.index);
 routes.post('/users', UserController.store);
+
 routes.delete('/users/', UserController.deleteAll);
 routes.delete('/users/:id', UserController.deleteForId);
 routes.put('/users/:id', UserController.update);
@@ -33,6 +35,11 @@ routes.post('/categories', CategoryController.store);
 routes.delete('/categories/', CategoryController.deleteAll);
 routes.delete('/categories/:id', CategoryController.deleteForId);
 routes.put('/categories/:id', CategoryController.update);
+
+//IMAGES ROUTES
+routes.get('/images', ImageController.index); //LISTA TODAS AS IMAGES
+routes.get('/services/:service_id/images', ImageController.listImageForService); //LISTA IMAGES POR SERVICES
+routes.post('/services/:service_id/images', ImageController.store); // CRIA IMAGE
 
 
 

@@ -21,6 +21,14 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
+      avatar: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
+      role: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
       created_at: {
         type: Sequelize.DATE,
         allowNull: false
@@ -28,6 +36,10 @@ module.exports = {
       updated_at: {
         type: Sequelize.DATE,
         allowNull: false
+      },
+      deleted_at: {
+        type: Sequelize.DATE,
+        allowNull: true
       },
     });
   },
